@@ -122,7 +122,7 @@ class HashableFileMixin(models.Model):
     @classmethod
     def get_or_create(cls, obj):
         """Deprecated in favor for the canonical `objects.get_or_create` method"""
-        raise DeprecationWarning('Please use `%s.objects.get_or_create()` instead' % cls)
+        raise DeprecationWarning(f'Please use `{cls}.objects.get_or_create()` instead')
 
     @classmethod
     def create_from_file(cls, filename):

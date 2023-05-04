@@ -47,8 +47,7 @@ class Estimator(HashableFileMixin):
         db_table = 'estimators'
 
     def __repr__(self):
-        return '<Estimator <Id %s> <Hash %s>: %s>' % (
-            self.id, self.object_hash, self.estimator)
+        return f'<Estimator <Id {self.id}> <Hash {self.object_hash}>: {self.estimator}>'
 
     @property
     def estimator(self):
@@ -66,11 +65,11 @@ class Estimator(HashableFileMixin):
     def clean(self):
         if self.object_hash != self._compute_hash(self.estimator):
             raise ValidationError(
-                "object_hash '%s' should be set by the estimator '%s'" %
-                (self.object_hash, self.estimator))
+                f"object_hash '{self.object_hash}' should be set by the estimator '{self.estimator}'"
+            )
         # if already persisted, do not update estimator
         obj = Estimator.objects.filter(object_hash=self.object_hash).first()
         if self.id and self.object_hash != getattr(obj, 'object_hash', None):
             raise ValidationError(
-                "Cannot persist updated estimator '%s'.  Create a new Estimator object." %
-                self.estimator)
+                f"Cannot persist updated estimator '{self.estimator}'.  Create a new Estimator object."
+            )

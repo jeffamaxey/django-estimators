@@ -16,7 +16,7 @@ def pytest_configure(config):
 
 
 def pytest_report_header(config):
-    print('MEDIA_ROOT temporary directory: %s' % temp_dir.name)
+    print(f'MEDIA_ROOT temporary directory: {temp_dir.name}')
 
 
 def pytest_unconfigure(config):

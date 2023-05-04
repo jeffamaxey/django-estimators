@@ -13,8 +13,7 @@ files_map = {
 
 def get_upload_path(instance, filename):
     directory = files_map[instance._object_property_name]
-    relative_path = os.path.join(directory, filename)
-    return relative_path
+    return os.path.join(directory, filename)
 
 
 def get_storage():

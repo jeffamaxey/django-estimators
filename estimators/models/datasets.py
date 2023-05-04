@@ -36,4 +36,4 @@ class DataSet(HashableFileMixin):
         super().save(*args, **kwargs)
 
     def __repr__(self):
-        return '<Dataset <Id %s - %s>>' % (self.id, str(self.data))
+        return f'<Dataset <Id {self.id} - {str(self.data)}>>'

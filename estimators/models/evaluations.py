@@ -98,8 +98,7 @@ class Evaluator(EvaluationMixin):
         er.save()
 
     def __repr__(self):
-        return '<Evaluator(X_test=%s estimator=%s)>' % (
-            self.X_test, self.estimator)
+        return f'<Evaluator(X_test={self.X_test} estimator={self.estimator})>'
 
 
 class EvaluationResult(EvaluationMixin, PrimaryMixin, models.Model):
@@ -117,4 +116,4 @@ class EvaluationResult(EvaluationMixin, PrimaryMixin, models.Model):
         db_table = 'evaluation_results'
 
     def __repr__(self):
-        return '<EvaluationResult <Id %s>' % (self.id)
+        return f'<EvaluationResult <Id {self.id}>'

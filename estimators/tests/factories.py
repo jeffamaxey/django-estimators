@@ -23,6 +23,7 @@ def random_array(min_value=0, max_value=100, shape=(100, )):
 
 class EstimatorFactory(DjangoModelFactory):
 
+
     class Meta:
         model = Estimator
         django_get_or_create = ('object_hash',)
@@ -34,10 +35,15 @@ class EstimatorFactory(DjangoModelFactory):
     create_date = factory.LazyFunction(datetime.now)
     object_hash = factory.LazyAttribute(lambda o: compute_hash(o.estimator))
     object_file = DjangoFileField(
-        filename=lambda o: '%s/%s' % (Estimator.DIRECTORY, o.object_hash))
+        filename=lambda o: f'{Estimator.DIRECTORY}/{o.object_hash}'
+    )
+
+
+
 
 
 class DataSetFactory(DjangoModelFactory):
+
 
     class Meta:
         model = DataSet
@@ -57,7 +63,9 @@ class DataSetFactory(DjangoModelFactory):
     create_date = factory.LazyFunction(datetime.now)
     object_hash = factory.LazyAttribute(lambda o: compute_hash(o.data))
     object_file = DjangoFileField(
-        filename=lambda o: '%s/%s' % (DataSet.DIRECTORY, o.object_hash))
+        filename=lambda o: f'{DataSet.DIRECTORY}/{o.object_hash}'
+    )
+
 
 
 class EvaluationResultFactory(DjangoModelFactory):
